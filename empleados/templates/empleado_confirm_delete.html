@@ -1,0 +1,29 @@
+<!--  Creado por IA  -->
+
+{% extends 'empleados/base.html' %}
+{% load static %}
+
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Confirmar Eliminación</h4>
+    </div>
+    <div class="card-body">
+        <p class="lead">¿Estás seguro de que quieres eliminar a **{{ object.nombres }} {{ object.apellidos }}**?</p>
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>Esta acción realizará una "eliminación suave", el registro no se borrará permanentemente de la base de datos.
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger me-2">
+                <i class="fas fa-trash-alt me-2"></i>Confirmar Eliminación
+            </button>
+            <a href="{% url 'empleados:empleado_list' %}" class="btn btn-secondary">
+                <i class="fas fa-times-circle me-2"></i>Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

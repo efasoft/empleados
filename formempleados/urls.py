@@ -14,9 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""
+          Creado por IA
+"""
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.shortcuts import redirect
+
+def home_redirect(request):
+    return redirect('empleados:empleado_list')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('empleados/', include('empleados.urls')),
+    path('usuarios/', include('usuarios.urls')),
+    path('', home_redirect, name='home'), # Redirige la raíz a la lista de empleados
 ]
+
+

@@ -1,0 +1,21 @@
+<!--  Creado por IA  -->
+
+{% extends 'empleados/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Editar Empleado{% else %}Crear Empleado{% endif %}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">{% if form.instance.pk %}Editar Empleado{% else %}Crear Nuevo Empleado{% endif %}</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" class="form-horizontal">
+            {% csrf_token %}
+            {{ form|crispy }}
+        </form>
+    </div>
+</div>
+{% endblock %}

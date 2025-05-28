@@ -25,7 +25,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-load_dotenv() # Carga las variables de entorno desde .env
+load_dotenv() # CARGA LAS VARIABLES DE ENTORNO DESDE .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,7 +74,7 @@ ROOT_URLCONF = 'formempleados.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], # Directorio global de templates
+        'DIRS': [os.path.join(BASE_DIR, 'empleados/templates')], # Directorio global de templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -158,20 +158,22 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'empleados/static',
 ]
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'empleados/media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuración de crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-# Configuración para la autenticación
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/usuarios/login/'
+LOGIN_REDIRECT_URL = '/' # Redirige al inicio después del login
+LOGOUT_REDIRECT_URL = '/login/' # Redirige al login después del logout
+
+# Configuración de Custom User Model (si fuera necesario, pero el prompt indica usar el User de Django)
+# AUTH_USER_MODEL = 'usuarios.CustomUser'
