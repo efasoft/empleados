@@ -1,13 +1,13 @@
 """   Creado por IA """
 
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
-from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
-
+from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
+
 
 class RegisterView(SuccessMessageMixin, CreateView):
     template_name = 'usuarios/register.html'
@@ -24,7 +24,7 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'usuarios/login.html'
+    template_name = 'login.html'
     authentication_form = CustomAuthenticationForm
 
     def form_valid(self, form):

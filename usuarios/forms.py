@@ -3,8 +3,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password # Importar make_password
-from pydantic import ValidationError, BaseModel, Field
+from django.contrib.auth.hashers import make_password
+# CORRECTED: Añade field_validator y model_validator aquí
+from pydantic import ValidationError, BaseModel, Field, model_validator, field_validator # <-- AQUI LA CORRECCIÓN
 import re
 
 # Pydantic model para validación de registro
@@ -43,8 +44,8 @@ class CustomUserCreationForm(UserCreationForm):
                 field = error['loc'][0]
                 message = error['msg']
                 # Mapear los errores de Pydantic a los campos del formulario Django
-                if field == 'password':
-                    self.add_error('password2', message) # Mostrar error en password2
+                if field == 'password' or field == 'password2': # Ambos campos de password pueden generar errores
+                    self.add_error('password2', message)
                 elif field == 'email':
                     self.add_error('email', message)
                 elif field == 'username':
@@ -69,6 +70,14 @@ class CustomAuthenticationForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Importación de FormHelper y Layout se hace en el archivo de vistas o en el template
+        # si se usa {% crispy form %}. Si se renderiza manual, se hace aquí.
+        # Por simplicidad y para no alargar más el error, asumo que Crispy Forms ya funciona.
+        # Si tienes problemas con Crispy Forms, asegúrate de que sus importaciones
+        # (FormHelper, Layout, Submit, etc.) también estén en este archivo si las usas directamente.
+        from crispy_forms.helper import FormHelper
+        from crispy_forms.layout import Layout, Submit, Row, Column, Field, HTML
+
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Field('username', css_class='form-control'),

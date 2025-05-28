@@ -1,9 +1,8 @@
-Django~=5.0
-psycopg2-binary~=2.9
-pydantic~=2.0
-python-dotenv~=1.0
-Pillow~=10.0
-django-crispy-forms~=2.0
-crispy-bootstrap5
-python-dotenv==1.*
+Django==5.0.*
+psycopg2-binary==2.9.*
+pydantic==2.11.*
+django-crispy-forms==2.1.*
+crispy-bootstrap5==2024.1
+python-dotenv==1.0.*
+email_validator==2.1.*
 Pillow==10.*
