@@ -1,10 +1,180 @@
 /* Creado por IA */
 
 body {
+    /* Fondo degradado similar al de la imagen */
+    background: linear-gradient(to right top, #5D54A4, #7C4DFF); /* Degradado de morado a azul */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente un poco más moderna */
+    color: #fff; /* Texto blanco para contrastar con el fondo */
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo del contenedor semitransparente oscuro */
+    padding: 40px; /* Aumentar el padding */
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    max-width: 400px; /* Ajustar el ancho máximo */
+    width: 100%;
+    text-align: center; /* Centrar el texto */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo del contenedor */
+    -webkit-backdrop-filter: blur(5px); /* Para compatibilidad con Safari */
+}
+
+h2 {
+    color: #ffffff; /* Título blanco */
+    margin-bottom: 30px; /* Más espacio debajo del título */
+    font-size: 2.2em; /* Tamaño de fuente más grande */
+    font-weight: 300; /* Fuente más delgada */
+    letter-spacing: 1px;
+}
+
+/* Estilos para los campos de entrada con iconos */
+.input-group-custom {
+    position: relative;
+    margin-bottom: 25px; /* Espacio entre campos */
+}
+
+.input-group-custom .form-control {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo de campo semitransparente */
+    border: none; /* Sin borde por defecto */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Borde inferior más suave */
+    border-radius: 0; /* Sin redondeo */
+    color: #ffffff; /* Color de texto blanco */
+    padding-left: 50px; /* Espacio para el icono */
+    height: 50px; /* Altura de campo */
+    font-size: 1.1em;
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.input-group-custom .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.3); /* Cambiar fondo al enfocar */
+    border-bottom-color: #ffffff; /* Borde inferior blanco al enfocar */
+    box-shadow: none; /* Quitar sombra de enfoque por defecto de Bootstrap */
+    outline: none;
+}
+
+.input-group-custom .form-control::placeholder { /* Para placeholder */
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group-custom .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7); /* Color del icono */
+    font-size: 1.4em;
+    pointer-events: none; /* Asegura que el icono no intercepte clics */
+}
+
+/* Estilo para el botón de login */
+.btn-login {
+    background: linear-gradient(to right, #FF4081, #F06292); /* Degradado rosa/rojo */
+    border: none;
+    border-radius: 25px; /* Botón redondeado */
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 12px 0;
+    margin-top: 30px; /* Más espacio arriba */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    color: #fff; /* Color de texto del botón */
+}
+
+.btn-login:hover {
+    filter: brightness(1.1); /* Iluminar al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-register {
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco semitransparente */
+    border-radius: 25px;
+    font-size: 1.1em; /* Un poco más pequeño que el de login */
+    font-weight: bold;
+    padding: 10px 0;
+    margin-top: 15px; /* Espacio entre botones */
+    transition: all 0.3s ease;
+    width: 100%;
+    color: #fff;
+    text-decoration: none; /* Quita el subrayado del enlace */
+    display: block; /* Para que ocupe todo el ancho y se comporte como un botón */
+}
+
+.btn-register:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente al pasar el ratón */
+    border-color: #ffffff; /* Borde blanco sólido al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para "Remember me" y "Forgot password" */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+.form-check-label {
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 5px; /* Espacio entre checkbox y texto */
+}
+
+.form-check-input:checked {
+    background-color: #FF4081; /* Color de la palomita */
+    border-color: #FF4081;
+}
+
+.form-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Estilo para la línea divisoria inferior (elemento visual) */
+.divider-line {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo para el texto "designed by freepik.com" (opcional, solo para imitar la imagen) */
+.credit-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8em;
+    margin-top: 20px;
+}
+
+
+/*                   CAMBIOS DE INTERFACE
+ ANTES DE LOS CAMBIOS DE COLOR DE FONDO Y ESTILOS DE BOTONES 
+
+body {
     background-color: #f8f9fa;
     font-family: 'Arial', sans-serif;
 }
-
+  
+*/
 .navbar {
     margin-bottom: 20px;
 }

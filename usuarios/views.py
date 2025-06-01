@@ -10,7 +10,7 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 
 class RegisterView(SuccessMessageMixin, CreateView):
-    template_name = 'usuarios/register.html'
+    template_name = 'register.html'
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('usuarios:login')
     success_message = "Cuenta creada exitosamente. ¡Por favor, inicia sesión!"

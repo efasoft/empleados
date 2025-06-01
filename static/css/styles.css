@@ -1,0 +1,120 @@
+/* Creado por IA */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+/* */
+
+/* Estilos para formularios de empleados (crear/editar) */
+/* Reutiliza .login-container para el contenedor general del formulario de empleado */
+/* Los input-group-custom y form-control ya definidos funcionan bien aquí */
+
+
+
+/* fin del nuevo estilo */
+
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.container {
+    padding: 20px 0;
+}
+
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    background-color: #0d6efd; /* Color primary de Bootstrap */
+}
+
+.card-header h4 {
+    color: white;
+}
+
+.table thead {
+    background-color: #e9ecef;
+}
+
+.btn-success, .btn-info, .btn-danger {
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+.btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(23, 162, 184, 0.2);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+/* Estilos para los mensajes de SweetAlert2 (ajuste de iconos) */
+.swal2-icon.swal2-success .swal2-success-ring {
+    border-color: #28a745 !important; /* Verde Bootstrap */
+}
+.swal2-icon.swal2-success {
+    border-color: #28a745 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #dc3545 !important; /* Rojo Bootstrap */
+}
+.swal2-icon.swal2-warning {
+    border-color: #ffc107 !important; /* Amarillo Bootstrap */
+}
+.swal2-icon.swal2-info {
+    border-color: #17a2b8 !important; /* Azul claro Bootstrap */
+}
+
+/* Mejorar el aspecto del campo de foto */
+input[type="file"] {
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    width: 100%;
+}
+
+input[type="file"]:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(0, 123, 255, .25);
+}
+
+/* Campo de contraseña con toggle */
+.input-group .toggle-password {
+    border-left: 0;
+    background-color: #e9ecef;
+}
+
+.input-group .form-control:focus + .toggle-password {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 .25rem rgba(0, 123, 255, .25);
+}
+
+/* Paginación */
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.pagination .page-link {
+    color: #0d6efd;
+}
+.pagination .page-link:hover {
+    color: #0a58ca;
+}

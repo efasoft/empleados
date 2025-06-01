@@ -1,33 +1,98 @@
 <!--  Creado por IA  -->
-
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
-
-{% block title %}Iniciar Sesión{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white text-center">
-                <h4 class="mb-0">Iniciar Sesión</h4>
-            </div>
-            <div class="card-body">
-                <form method="post" class="form-horizontal">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary mt-3">
-                            <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
-                        </button>
-                        <a href="{% url 'usuarios:register' %}" class="btn btn-secondary mt-2">
-                            <i class="fas fa-user-plus me-2"></i>Registrarse
-                        </a>
-                    </div>
-                </form>
-            </div>
+            <h4 class="mb-0">Iniciar Sesión</h4>
         </div>
+        <div class="card-body">
+
+
+          <div class="login-container">
+            <div class="mb-4 text-center">
+                <i class="fa-solid fa-user-circle" style="font-size: 80px; color: rgba(83, 135, 194, 0.5);"></i>
+            </div>
+    
+            <h2 class="mb-4">LOGIN</h2> {# Título en mayúsculas como en la imagen #}
+            
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                
+                {# Campo de Username con icono #}
+                <div class="input-group-custom">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" 
+                           class="form-control" placeholder="USUARIO" required 
+                           value="{{ form.username.value|default:'' }}">
+                    {% if form.username.errors %}
+                        <div class="text-danger small text-start">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+    
+                {# Campo de Password con icono #}
+                <div class="input-group-custom">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" 
+                           class="form-control" placeholder="PASSWORD" required>
+                    {% if form.password.errors %}
+                        <div class="text-danger small text-start">{{ form.password.errors }}</div>
+                    {% endif %}
+                </div>
+
+                {# Botón de Iniciar Sesión #}
+                <button type="submit" class="btn btn-login">INICIAR SESIÓN</button> {# <--- CAMBIO CLAVE AQUÍ: Texto del botón #}
+
+                {# Botón Registrarse #}
+                <a href="{% url 'usuarios:register' %}" class="btn btn-register">REGISTRARSE</a> {# <--- NUEVO BOTÓN #}
+
+    
+                {# Opciones "Remember me" y "Forgot your password?" #}
+
+    
+                {# Línea divisoria inferior #}
+                <div class="divider-line"></div>
+    
+                {# Texto de crédito (opcional) #}
+
+    
+                {# No mostramos los non_field_errors aquí, los manejamos con SweetAlert2 #}
+            </form>
+        </div>
+        </div>
+
+
+
+
     </div>
+  </div>
 </div>
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de autenticación',
+                        text: '{{ error|escapejs }}', // El error de Django se inyecta aquí
+                        confirmButtonText: 'Entendido',
+                        customClass: {
+                            confirmButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                    });
+                {% endfor %}
+            {% endif %}
+        });
+    </script>
 {% endblock %}
+
+{% endblock %}
+
+
+
